@@ -1,0 +1,1 @@
+Minimal GUI app to display pictures whose paths are retrieved from a SQLite database.

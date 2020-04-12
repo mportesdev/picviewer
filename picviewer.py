@@ -19,6 +19,7 @@ class App(tkinter.Frame):
         super().__init__(master)
         self.pack()
 
+        self.current_id = None
         self.item_id = tkinter.IntVar()
 
         self.draw_gui()
@@ -35,7 +36,12 @@ class App(tkinter.Frame):
         self.image_widget.pack()
 
     def show_image(self):
-        path = path_from_id(self.item_id.get())
+        id = self.item_id.get()
+        if id == self.current_id:
+            return
+        self.current_id = id
+
+        path = path_from_id(id)
         self.current_image = tkinter.PhotoImage(file=path)
         self.image_widget['image'] = self.current_image
 

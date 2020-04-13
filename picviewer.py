@@ -35,6 +35,9 @@ class App(tkinter.Frame):
         self.image_widget = tkinter.Label(self)
         self.image_widget.pack()
 
+        self.path_label = tkinter.Label(self)
+        self.path_label.pack()
+
     def show_image(self):
         id = self.item_id.get()
         if id == self.current_id:
@@ -44,6 +47,7 @@ class App(tkinter.Frame):
         path = path_from_id(id)
         self.current_image = tkinter.PhotoImage(file=path)
         self.image_widget['image'] = self.current_image
+        self.path_label['text'] = path
 
 
 def main():

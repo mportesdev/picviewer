@@ -4,10 +4,11 @@ import tkinter
 
 def path_from_id(id):
     conn = sqlite3.connect('db/db.sqlite3')
+    conn.row_factory = sqlite3.Row
     cur = conn.cursor()
 
-    cur.execute('SELECT path FROM color WHERE id=?', (id,))
-    path = cur.fetchone()[0]
+    cur.execute('SELECT * FROM color WHERE id=?', (id,))
+    path = cur.fetchone()['path']
 
     conn.close()
     return path
